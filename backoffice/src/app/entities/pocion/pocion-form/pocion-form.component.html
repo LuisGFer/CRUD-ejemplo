@@ -1,0 +1,65 @@
+<header>
+    <h1>Ficha de poción</h1>
+</header>
+
+<div class="alert alert-danger" role="alert" *ngIf="error">
+    {{mensaje}}
+</div>
+<div class="alert alert-success" role="alert" *ngIf="success"> 
+    {{mensaje}}
+</div>
+
+<form name="pocionForm" role="form" novalidate #editForm="ngForm" autocomplete="off">
+    <div class="form-group" *ngIf="!modoAlta">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" id="id" [(ngModel)]="pocion.id" name="id">
+    </div>
+
+    <div class="form-group">
+        <label for="titulo">Nombre</label>
+        <input type="text" class="form-control" id="titulo" [(ngModel)]="pocion.titulo" name="titulo" maxlength="100" required>
+    </div>
+
+    <!-- Validación campo -->
+    <div [hidden]="!(editForm.controls.titulo?.dirty && editForm.controls.titulo?.invalid)">
+        <small class="form-text text-danger"
+        [hidden]="!editForm.controls.titulo?.errors?.required">
+        Este campo es requerido
+        </small>
+        <small class="form-text text-danger"
+        [hidden]="!editForm.controls.titulo?.errors?.maxlength">
+        Este campo no puede superar los 100 caracteres
+        </small>
+    </div>
+
+    <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" class="form-control" id="descripcion" [(ngModel)]="pocion.descripcion" name="descripcion" maxlength="250">
+    </div>
+
+        <!-- Validación campo -->
+        <div [hidden]="!(editForm.controls.descripcion?.dirty && editForm.controls.descripcion?.invalid)">
+            <small class="form-text text-danger"
+            [hidden]="!editForm.controls.descripcion?.errors?.maxlength">
+            Este campo no puede superar los 250 caracteres
+            </small>
+        </div>
+
+
+    <div class="form-group">
+        <label for="esEpica">Es épica</label>
+        <input type="checkbox" class="form-control" id="esEpica" [(ngModel)]="pocion.esEpica" name="esEpica">
+    </div>
+</form>
+
+<div class="botoneraFooter">
+    <a routerLink="/pociones-list">
+        <button id="btnVolver" class="btn-secondary">< Volver</button>
+    </a>
+    <button [disabled]="editForm.form.invalid" id="btnGuardar" class="btn-primary" (click)="guardar()">Guardar</button>
+    
+</div>
+
+
+
+

@@ -1,0 +1,51 @@
+
+header {
+    padding: 15px;
+}
+
+header h1 {
+    font-size: 20pt;
+    color: black;
+}
+
+form {
+    margin: 25px;
+}
+
+#esEpica {
+    width: 10px;
+}
+
+
+.botoneraFooter {
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 25px;
+    padding-right: 30px;
+    margin-bottom: 20px;
+}
+
+#btnVolver {
+    float: left;
+}
+
+#btnGuardar {
+    float: right;
+}
+
+.botoneraFooter button{
+    border-radius: 10px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}
+
+#btnGuardar:disabled {
+    background: silver;
+    border: 2px solid silver;
+  }

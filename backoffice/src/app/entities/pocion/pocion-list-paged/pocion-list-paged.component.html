@@ -1,0 +1,107 @@
+<header>
+    <h1>Lista de pociones paginada</h1>
+</header>
+
+<div class="botoneraHeader">
+    <a routerLink="/pociones-form">
+        <button id="btnNuevo" class="btn-primary">Nueva poción</button>
+    </a>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="error">
+    {{mensaje}}
+</div>
+<div class="alert alert-success" role="alert" *ngIf="success"> 
+    {{mensaje}}
+</div>
+
+<div class="containerFiltros">
+
+    <h1>Filtros</h1>
+
+    <form> 
+        <div class="row">
+
+            <div class="form-group col-12 col-md-6">
+                <label for="titulo">Nombre</label>
+                <input type="text" class="form-control" id="titulo" [(ngModel)]="filtroTitulo" name="filtroTitulo">
+            </div>
+    
+            <div class="form-group col-12 col-md-3">
+                <label for="esEpica">Es épica</label>
+                <input type="checkbox" class="form-control" id="esEpica" [(ngModel)]="filtroEsEpica" name="filtroEsEpica">
+            </div>
+
+            <div class="col-12 col-md 3">
+                <button id="btnBuscar" class="btn btn-secondary" (click)="buscar()">Buscar</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Es épica</th>
+        <th>Acciones</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pocion of pociones;">
+            <td>{{pocion.id}}</td>
+            <td>{{pocion.titulo}}</td>
+            <td>{{pocion.descripcion}}</td>
+            <td>{{pocion.esEpica}}</td>
+            <td>
+                <!-- Botones de acción -->
+                <a [routerLink]="['/pociones-form', pocion.id]">
+                    <button id="btnEditar" class="btn-secondary">Editar</button>
+                </a>
+                <button id="btnEliminar" class="btn-danger" data-toggle="modal" data-target="#modalEliminar" 
+                attr.data-pocion="{{pocion.id}}" (click)="prepararEliminar(pocion.id)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="botoneraPaginacion">
+    <button [disabled]="first" class="btn btn-secondary btnAtras" (click)="navegarAnterior()">Anterior</button>
+    <span>Pagina {{(page+1)}} de {{totalPages}} - Elementos totales: {{totalElements}}</span>
+    <button [disabled]="last" class="btn btn-secondary btnSiguiente" (click)="navegarSiguiente()">Siguiente</button>
+</div>
+
+<div class="botoneraFooter">
+    <a routerLink="">
+        <button id="btnVolver" class="btn-secondary">< Volver</button>
+    </a>
+</div>
+
+
+<!-- Modal confirmación eliminar -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalEliminarTitle">Confirmación de borrado</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            ¿Realmente desea eliminar la poción {{pocionAEliminar}}?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="eliminar(pocionAEliminar)" >Eliminar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
