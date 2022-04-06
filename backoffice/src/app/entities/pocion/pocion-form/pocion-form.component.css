@@ -49,3 +49,9 @@ form {
     background: silver;
     border: 2px solid silver;
   }
+
+.pocionImage {
+    display: block;
+    width: 60px;
+    height: 60px;
+}

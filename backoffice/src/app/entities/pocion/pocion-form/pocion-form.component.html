@@ -50,6 +50,14 @@
         <label for="esEpica">Es épica</label>
         <input type="checkbox" class="form-control" id="esEpica" [(ngModel)]="pocion.esEpica" name="esEpica">
     </div>
+
+    <div class="form-group">
+        <label for="imagen">Imagen de la poción</label>
+        <img *ngIf="existeImagen()" class="pocionImage" src="{{pocion.imagenTipo}},{{pocion.imagen}}" />
+        <input type="file" accept=".png,.gif" class="form-control" id="imagen" (change)="incluirImagenEnObjeto($event)" name="imagen">
+    </div>
+
+
 </form>
 
 <div class="botoneraFooter">

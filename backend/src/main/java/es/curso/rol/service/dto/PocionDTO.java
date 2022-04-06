@@ -8,4 +8,6 @@ public class PocionDTO {
     private String titulo;
     private String descripcion;
     private Boolean esEpica;
+    private String imagenTipo;
+    private byte[] imagen;
 }

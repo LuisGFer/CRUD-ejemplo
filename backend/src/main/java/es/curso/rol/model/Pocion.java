@@ -22,4 +22,11 @@ public class Pocion {
     @Column(name = "es_epica")
     private Boolean esEpica;
 
+    @Lob
+    @Column
+    private byte[] imagen;
+
+    @Column
+    private String imagenTipo;
+
 }

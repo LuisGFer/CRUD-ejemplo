@@ -3,6 +3,8 @@ export class Pocion {
     titulo: string;
     descripcion: string;
     esEpica: boolean;
+    imagen: string;
+    imagenTipo: string;
 }
 
 

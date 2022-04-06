@@ -18,6 +18,7 @@
 <table>
     <thead>
         <th>ID</th>
+        <th>Imagen</th>
         <th>Nombre</th>
         <th>Descripción</th>
         <th>Es épica</th>
@@ -26,6 +27,9 @@
     <tbody>
         <tr *ngFor="let pocion of pociones;">
             <td>{{pocion.id}}</td>
+            <td>
+                <img class="pocionImage" src="{{pocion.imagenTipo}},{{pocion.imagen}}" />
+            </td>
             <td>{{pocion.titulo}}</td>
             <td>{{pocion.descripcion}}</td>
             <td>{{pocion.esEpica}}</td>
